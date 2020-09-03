@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
+const {ObjectId} = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -34,14 +35,20 @@ const userSchema = new mongoose.Schema({
     about: {
         type: String
     },
-    photo: {
+    profilepic: {
         data: Buffer,
         contentType: String
     },
     resetPasswordLink: {
         data: String,
         default: ""
-    }
+    },
+    coverpic:{
+        data:Buffer,
+        contentType:String
+    },
+    Followers: [{ type: ObjectId, ref: "User" }],
+	Following: [{ type: ObjectId, ref: "User" }],
 }, {timestamps: true});
 
 userSchema.virtual('password').set(function(password) { // create a temporary variable called _password

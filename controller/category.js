@@ -1,7 +1,6 @@
 const Category = require('../models/category');
 const slugify = require('slugify');
 const async = require('async');
-const AutoComplete = require('../autocomplete/main').AutoComplete;
 const url = require('url');
 const category = require('../models/category');
 

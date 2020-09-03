@@ -13,16 +13,11 @@ const blogSchema = new mongoose.Schema({
         type: String,
         index:true
     },
-    body: {
+    Captions: {
         type: {},
         required: true,
         min:200,
         max:2000000
-    },
-    excerpt: {
-        type: String,
-        required: true,
-        max:1000
     },
     mtitle: {
         type: String,
@@ -30,25 +25,12 @@ const blogSchema = new mongoose.Schema({
     mdesc: {
         type: String,
     },
-    photo: {
-        data: Buffer,
-        contentType: String
+    Url:{
+        type:String,
+        required:true
     },
     category:[{type:ObjectId,ref:'Category',required:true}],
-    Likes: [{ type: ObjectId, ref: "User" }],
-	Comments: [{
-				Text: String,
-				PostedBy: {
-					type: ObjectId,
-					ref: "User",
-				},
-			},
-		],
     postedBy:{type:ObjectId,ref:'User'},
 }, {timestamps: true});
 
 module.exports = mongoose.model('Blog', blogSchema);
-
-
-//TODO add like options 
-//TODO add comment options 
